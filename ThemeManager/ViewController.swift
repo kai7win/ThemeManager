@@ -28,6 +28,8 @@ class ViewController: UIViewController{
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var btn: UIButton!
     
+    private var currentThemeIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 訂閱主題變化
@@ -45,7 +47,14 @@ class ViewController: UIViewController{
     }
     
     @IBAction func tapBtn(_ sender: Any) {
-        ThemeManager.shared.switchToTheme(.cyan)
+        // 取得所有的主題
+        let allThemes: [ThemeManager.ThemeType] = [.darkBlue, .black, .red, .orange, .cyan]
+        
+        // 更新當前的主題索引
+        currentThemeIndex = (currentThemeIndex + 1) % allThemes.count
+        
+        // 切換到新的主題
+        ThemeManager.shared.switchToTheme(allThemes[currentThemeIndex])
     }
     
 }
@@ -54,5 +63,6 @@ class ViewController: UIViewController{
 extension ViewController:Themed{
     func applyTheme(_ theme: Theme) {
         label.textColor = ThemeManager.shared.theme.navColor
+        btn.tintColor = ThemeManager.shared.theme.navColor
     }
 }
