@@ -13,6 +13,7 @@
 		EF6361A32AB5689E00246A43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF6361A12AB5689E00246A43 /* Main.storyboard */; };
 		EF6361A52AB568A000246A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF6361A42AB568A000246A43 /* Assets.xcassets */; };
 		EF6361A82AB568A000246A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF6361A62AB568A000246A43 /* LaunchScreen.storyboard */; };
+		EF6361B02AB5729900246A43 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6361AF2AB5729900246A43 /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EF6361A42AB568A000246A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF6361A72AB568A000246A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF6361A92AB568A000246A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF6361AF2AB5729900246A43 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				EF63619B2AB5689E00246A43 /* AppDelegate.swift */,
 				EF63619D2AB5689E00246A43 /* SceneDelegate.swift */,
 				EF63619F2AB5689E00246A43 /* ViewController.swift */,
+				EF6361AF2AB5729900246A43 /* ThemeManager.swift */,
 				EF6361A12AB5689E00246A43 /* Main.storyboard */,
 				EF6361A42AB568A000246A43 /* Assets.xcassets */,
 				EF6361A62AB568A000246A43 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				EF6361A02AB5689E00246A43 /* ViewController.swift in Sources */,
 				EF63619C2AB5689E00246A43 /* AppDelegate.swift in Sources */,
 				EF63619E2AB5689E00246A43 /* SceneDelegate.swift in Sources */,
+				EF6361B02AB5729900246A43 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

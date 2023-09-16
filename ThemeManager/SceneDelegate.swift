@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  ThemeManager
 //
-//  Created by Thomas on 2023/9/16.
+//  Created by Kai Chi Tsao on 2023/9/16.
 //
 
 import UIKit
