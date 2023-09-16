@@ -8,7 +8,7 @@
 import UIKit
 
 /**
-    使用方式:
+    使用方式：
     Step1: 繼承 Themed
  
     Step2: viewDidLoad訂閱主題變化 ThemeManager.shared.subscribe(self)
@@ -17,8 +17,17 @@ import UIKit
  
     EX. label.textColor = ThemeManager.shared.theme.navColor
     
-    改變主題色
+    改變主題色：
     ThemeManager.shared.switchToTheme(.color)
+ 
+ 
+    自行定義主題色：
+        let userDefinedTheme = CustomTheme(
+            bgColor: .white,
+            navColor: .blue,
+            // ...其他顏色設定
+        )
+    ThemeManager.shared.switchToTheme(.custom(userDefinedTheme))
  
  */
 
@@ -55,6 +64,8 @@ class ViewController: UIViewController{
         
         // 切換到新的主題
         ThemeManager.shared.switchToTheme(allThemes[currentThemeIndex])
+        
+        
     }
     
 }

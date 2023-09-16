@@ -20,7 +20,7 @@ class ThemeManager {
     static let shared = ThemeManager()
 
     // 目前的主題。當它被設定為新值時，所有訂閱的對象都會被通知
-    var theme: ThemeProtocol = Theme.red {
+    var theme: ThemeProtocol = DefaultTheme.red {
         didSet {
             updateSubscribers()
         }
@@ -62,20 +62,21 @@ extension ThemeManager {
 /** 擴展 ThemeManager 以提供不同的主題選擇和切換方法 */
 extension ThemeManager {
     enum ThemeType {
-        case darkBlue, black, red, orange, cyan
+        case darkBlue, black, red, orange, cyan, custom(CustomTheme)
         
-        var theme: Theme {
+        var theme: ThemeProtocol {
             switch self {
-            case .darkBlue: return .darkBlue
-            case .black: return .black
-            case .red: return .red
-            case .orange: return .orange
-            case .cyan: return .cyan
+            case .darkBlue: return DefaultTheme.darkBlue
+            case .black: return DefaultTheme.black
+            case .red: return DefaultTheme.red
+            case .orange: return DefaultTheme.orange
+            case .cyan: return DefaultTheme.cyan
+            case .custom(let theme): return theme
             }
         }
     }
     
-    // 允許輕鬆切換到指定的主題。
+    // 允許輕鬆切換到指定的主題
     func switchToTheme(_ type: ThemeType) {
         self.theme = type.theme
     }
@@ -97,7 +98,7 @@ protocol ThemeProtocol {
 }
 
 /**  Theme UI 顏色方案 */
-struct Theme:ThemeProtocol {
+struct DefaultTheme:ThemeProtocol {
     var bgColor: UIColor
     var navColor: UIColor
     var navText: UIColor
@@ -113,7 +114,7 @@ struct Theme:ThemeProtocol {
     //以下 定義了幾套預設的主題顏色方案。
     // 如 darkBlue、black 等。
     
-    static let darkBlue = Theme(
+    static let darkBlue = DefaultTheme(
         bgColor: UIColor(red: 6/255, green: 69/255, blue: 128/255, alpha: 1),
         navColor: UIColor(red: 35/255, green: 81/255, blue: 148/255, alpha: 1),
         navText: .white,
@@ -127,7 +128,7 @@ struct Theme:ThemeProtocol {
         text2: .white
     )
     
-    static let black = Theme(
+    static let black = DefaultTheme(
         bgColor: .black,
         navColor: .darkGray,
         navText:.white,
@@ -141,7 +142,7 @@ struct Theme:ThemeProtocol {
         text2: .white
     )
     
-    static let red = Theme(
+    static let red = DefaultTheme(
         bgColor: .white,
         navColor: UIColor(red: 236/255, green: 40/255, blue: 41/255, alpha: 1),
         navText:.white,
@@ -155,7 +156,7 @@ struct Theme:ThemeProtocol {
         text2: UIColor(red: 236/255, green: 40/255, blue: 41/255, alpha: 1)
     )
     
-    static let orange = Theme(
+    static let orange = DefaultTheme(
         bgColor: .white,
         navColor: UIColor(red: 255/255, green: 134/255, blue: 23/255, alpha: 1),
         navText:.white,
@@ -169,7 +170,7 @@ struct Theme:ThemeProtocol {
         text2: UIColor(red: 255/255, green: 159/255, blue: 23/255, alpha: 1)
     )
     
-    static let cyan = Theme(
+    static let cyan = DefaultTheme(
         bgColor: .white,
         navColor: UIColor(red: 44/255, green: 119/255, blue: 234/255, alpha: 1),
         navText:.black,
@@ -183,3 +184,21 @@ struct Theme:ThemeProtocol {
         text2: UIColor(red: 44/255, green: 119/255, blue: 234/255, alpha: 1)
     )
 }
+
+
+/** CustomTheme 結構允許使用者定義自訂的顏色方案 */
+struct CustomTheme: ThemeProtocol {
+    var bgColor: UIColor
+    var navColor: UIColor
+    var navText: UIColor
+    var btnColor: UIColor
+    var btnColor2: UIColor
+    var btnText: UIColor
+    var btnSelected: UIColor
+    var btnSelected2: UIColor
+    var btnSelectedText: UIColor
+    var text1: UIColor
+    var text2: UIColor
+}
+
+
