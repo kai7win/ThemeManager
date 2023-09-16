@@ -61,7 +61,7 @@ class ViewController: UIViewController{
 
 
 extension ViewController:Themed{
-    func applyTheme(_ theme: Theme) {
+    func applyTheme(_ theme: ThemeProtocol) {
         label.textColor = ThemeManager.shared.theme.navColor
         btn.tintColor = ThemeManager.shared.theme.navColor
     }

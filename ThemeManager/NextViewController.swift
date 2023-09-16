@@ -8,6 +8,7 @@
 import UIKit
 
 class NextViewController: UIViewController,Themed {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +17,8 @@ class NextViewController: UIViewController,Themed {
         self.view.backgroundColor = ThemeManager.shared.theme.navColor
     }
     
-    func applyTheme(_ theme: Theme) {
+    func applyTheme(_ theme: ThemeProtocol) {
         self.view.backgroundColor = ThemeManager.shared.theme.navColor
     }
-
+    
 }

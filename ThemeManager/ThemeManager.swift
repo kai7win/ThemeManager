@@ -8,19 +8,19 @@
 import Foundation
 import UIKit
 
-// Themed 協議用於定義任何可以應用主題的對象應該實現的方法
+/** Themed 協議用於定義任何可以應用主題的對象應該實現的方法 */
 protocol Themed: AnyObject {
-    func applyTheme(_ theme: Theme)
+    func applyTheme(_ theme: ThemeProtocol)
 }
 
-// ThemeManager 是管理應用主題的核心
+/** ThemeManager 是管理應用主題的核心 */
 class ThemeManager {
     
     // 使用單例模式，確保整個應用只有一個 ThemeManager 實例
     static let shared = ThemeManager()
 
     // 目前的主題。當它被設定為新值時，所有訂閱的對象都會被通知
-    var theme: Theme = .red {
+    var theme: ThemeProtocol = Theme.red {
         didSet {
             updateSubscribers()
         }
@@ -47,7 +47,7 @@ class ThemeManager {
 
 
 
-// 擴展 ThemeManager 以使用弱引用，確保不會有循環引用問題
+/** 擴展 ThemeManager 以使用弱引用，確保不會有循環引用問題 */
 extension ThemeManager {
     struct WeakRef<T: AnyObject> {
         weak var value: T?
@@ -59,7 +59,7 @@ extension ThemeManager {
 }
 
 
-// 擴展 ThemeManager 以提供不同的主題選擇和切換方法
+/** 擴展 ThemeManager 以提供不同的主題選擇和切換方法 */
 extension ThemeManager {
     enum ThemeType {
         case darkBlue, black, red, orange, cyan
@@ -81,8 +81,23 @@ extension ThemeManager {
     }
 }
 
-// Theme UI 顏色方案
-struct Theme {
+/** ThemeProtocol */
+protocol ThemeProtocol {
+    var bgColor: UIColor { get }
+    var navColor: UIColor { get }
+    var navText: UIColor { get }
+    var btnColor: UIColor { get }
+    var btnColor2: UIColor { get }
+    var btnText: UIColor { get }
+    var btnSelected: UIColor { get }
+    var btnSelected2: UIColor { get }
+    var btnSelectedText: UIColor { get }
+    var text1: UIColor { get }
+    var text2: UIColor { get }
+}
+
+/**  Theme UI 顏色方案 */
+struct Theme:ThemeProtocol {
     var bgColor: UIColor
     var navColor: UIColor
     var navText: UIColor
